@@ -10,9 +10,4 @@ public class UnitList : MonoBehaviour
     {
         return units[Random.Range(0, units.Count)];
     }
-
-    void Update()
-    {
-        // Debug.Log(getRandomUnit());
-    }
 }

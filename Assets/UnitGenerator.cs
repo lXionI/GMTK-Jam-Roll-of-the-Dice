@@ -13,7 +13,7 @@ public class UnitGenerator : MonoBehaviour
         if (player.GetComponent<UnitList>() == null)
             return;
 
-        foreach(var unit in player.GetComponent<UnitList>().units)
-            targetNation.GetComponent<NationInfoHandler>().addUnits(unit);
+        for (int i = 0; i < baseSetup.unitsPerRoundStart; i++)
+            targetNation.GetComponent<NationInfoHandler>().addUnits(player.GetComponent<UnitList>().getRandomUnit());
     }
 }

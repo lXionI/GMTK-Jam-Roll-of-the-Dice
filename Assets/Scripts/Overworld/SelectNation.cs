@@ -7,6 +7,7 @@ public class SelectNation : MonoBehaviour
     public Camera camera;
     public int layerMask;
     public Material playerMat;
+    private GameObject _selectedNation;
 
     void Start()
     {
@@ -15,16 +16,25 @@ public class SelectNation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+
+    }
+
+    public void selectNation()
+    {
+        RaycastHit hit;
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        _selectedNation = null;
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            RaycastHit hit;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                Debug.Log(hit.transform);
-                // For changing mat to player (can be used after battle)
-                // hit.transform.gameObject.GetComponent<MeshRenderer>().material = playerMat;
-            }
+            // Debug.Log(hit.transform);
+            _selectedNation = hit.transform.gameObject;
+            // For changing mat to player (can be used after battle)
+            // hit.transform.gameObject.GetComponent<MeshRenderer>().material = playerMat;
         }
+    }
+
+    public GameObject getSelectedNation()
+    {
+        return _selectedNation;
     }
 }

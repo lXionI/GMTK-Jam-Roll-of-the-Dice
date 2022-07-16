@@ -7,4 +7,5 @@ public class BaseSetupSO : ScriptableObject
 {
     public GameObject playerRef;
     public GameObject baseRef;
+    public int unitsPerRoundStart = 3;
 }

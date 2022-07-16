@@ -13,10 +13,6 @@ public class SetupPlayerBases : MonoBehaviour
 
     void Start()
     {
-        // foreach(var unit in player.GetComponent<UnitList>().units)
-            // playerBase.GetComponent<NationInfoHandler>().addUnits(unit);
-        // foreach(var unit in enemyPlayer.GetComponent<UnitList>().units)
-            // enemyBase.GetComponent<NationInfoHandler>().addUnits(unit);
         playerSetup.playerRef = player;
         playerSetup.baseRef = playerBase;
         enemySetup.playerRef = enemyPlayer;

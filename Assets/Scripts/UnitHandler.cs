@@ -6,6 +6,7 @@ public class UnitHandler : MonoBehaviour
 {
     [SerializeField]
     private UnitSO unitMeta;
+    private bool canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +17,15 @@ public class UnitHandler : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void moveUnit()
+    {
+        canMove = false;
+    }
+
+    public void newTurn()
+    {
+        canMove = true;
     }
 }
