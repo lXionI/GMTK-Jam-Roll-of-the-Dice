@@ -6,14 +6,14 @@ public class Character : MonoBehaviour
 {
     private int baseHealth=6;
     public int maxHealth;
-    private int currenthealth;
+    private int currentHealth;
     public int unitCount;
     //public int damage;
     //Roll for damage
     public int dice=0;
     public bool isDead = false;
     //tag um um das Tag der Jeweiligen Fraktion zu ändern
-    public string tag; 
+    public string trigger; 
 
     public float attackSpeed;
     public float attackTime;
@@ -29,28 +29,42 @@ public class Character : MonoBehaviour
     public void Start()
     {
         maxHealth = baseHealth * unitCount;
-        currenthealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public void Update()
     {
+        
         RaycastHit hit;
         Ray ray = new Ray(transform.position,Vector3.forward);
         if (!isDead)
         {
-            if (Physics.Raycast(ray, out hit, attackRange))
+            if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
             {
-                if (hit.collider.tag == tag)
+                if (hit.collider.tag == trigger)
                 {
-                    Attack();
+                    Debug.Log("Treffe auf den Feind");
+                    hit.collider.GetComponent<Character>().SetDamage(RollDamage());
+                    
                 }
             }
         }
     }
-
-    public void Attack()
+    public void SetDamage(int damage)
     {
+        currentHealth -= damage;
+        //isDamaged = true;
 
+        //healthbar.SetHealth(currentHealth);
+        //m.SetColor("_BaseColor", Color.red);
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            Destroy(gameObject);
+            //healthUI.SetActive(false);
+            //Destroy(healthUI);
+        }
     }
 
     /** change Form ,if characterCount greater than 

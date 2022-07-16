@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 854313896}
   - component: {fileID: 854313895}
   - component: {fileID: 854313894}
+  - component: {fileID: 854313900}
   m_Layer: 0
   m_Name: TestCube (Enemy)
   m_TagString: Enemy Troops
@@ -545,6 +546,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854313900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854313893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9c49478fd887d4387470fc60f4a040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  unitCount: 1
+  dice: 0
+  isDead: 0
+  trigger: Friendly Trooper
+  attackSpeed: 1
+  attackTime: 1.4
+  attackRange: 5
 --- !u!1 &897954460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,10 +1414,9 @@ GameObject:
   - component: {fileID: 2104161258}
   - component: {fileID: 2104161259}
   - component: {fileID: 2104161260}
-  - component: {fileID: 2104161261}
   m_Layer: 0
   m_Name: TestCube
-  m_TagString: Friedly Troops
+  m_TagString: Friendly Troops
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1529,34 +1549,8 @@ MonoBehaviour:
   maxHealth: 0
   unitCount: 2
   dice: 0
-  attackSpeed: 0
-  attackTime: 0
-  attackRange: 0
---- !u!114 &2104161261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104161253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c0a0a0db62dbc458ce30064372744a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  agent: {fileID: 2104161258}
-  npc: {fileID: 2104161257}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
-  maxHealth: 0
-  timeBetweenAtteck: 0
-  alreadyAttacked: 0
-  sightRange: 0
-  attackRange: 0
-  enemyInsightRange: 0
-  enemyInAttackRange: 0
+  isDead: 0
+  trigger: Enemy Troops
+  attackSpeed: 1
+  attackTime: 1.4
+  attackRange: 5
