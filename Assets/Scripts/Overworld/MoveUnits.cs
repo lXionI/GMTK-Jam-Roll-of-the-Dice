@@ -15,8 +15,6 @@ public class MoveUnits : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && _selecter.getSelectedNation() != null && timer > bufferTimer)
         {
-            // Debug.Log(_selecter.getSelectedNation());
-            // setSelections();
             timer = 0.0f;
         }
         timer += Time.deltaTime;
@@ -50,6 +48,69 @@ public class MoveUnits : MonoBehaviour
         else if (_sourceNation != nextNation)
         {
             _targetNation = nextNation;
+        }
+    }
+
+    public void checkCommand()
+    {
+        if (_sourceNation == null || _targetNation == null)
+            return;
+        if (_sourceNation.GetComponent<NationInfoHandler>().getOwner() != _targetNation.GetComponent<NationInfoHandler>().getOwner())
+        {
+            startFightForNation();
+            return;
+        }
+        moveUnits();
+        // Check if to fight
+        // or to move 
+    }
+
+    public void moveUnits()
+    {
+        if (_sourceNation == null || _targetNation == null)
+            return;
+        // Check who owns the nation
+        NationInfoHandler sourceNationInfo = _sourceNation.GetComponent<NationInfoHandler>();
+        NationInfoHandler targetNationInfo = _targetNation.GetComponent<NationInfoHandler>();
+        // If dont own => Fight
+
+        foreach (var unit in sourceNationInfo.getUnits())
+        {
+            targetNationInfo.addUnits(unit);
+        }
+        sourceNationInfo.removeAllUnits();
+        _targetNation.GetComponent<NationInfoHandler>().setOwner(_sourceNation.GetComponent<NationInfoHandler>().getOwner());
+    }
+
+    void startFightForNation()
+    {
+        // TODO: implement real fighting / convert this to an event for starting real auto battle fight
+        // Debug Solutions
+        int sourceArmySize = _sourceNation.GetComponent<NationInfoHandler>().getUnits().Count;
+        int targetArmySize = _targetNation.GetComponent<NationInfoHandler>().getUnits().Count;
+
+        if(sourceArmySize > targetArmySize)
+        {
+            // Win
+            Debug.Log("WE WON BABY");
+            if(targetArmySize > 0)
+            {
+                _sourceNation.GetComponent<NationInfoHandler>().removeUnits(sourceArmySize - targetArmySize);
+            }
+            _targetNation.GetComponent<NationInfoHandler>().removeAllUnits();
+            moveUnits();
+        }
+        else if (sourceArmySize < targetArmySize)
+        {
+            // Loose
+            _targetNation.GetComponent<NationInfoHandler>().removeUnits(targetArmySize - sourceArmySize);
+            _sourceNation.GetComponent<NationInfoHandler>().removeAllUnits();
+        }
+        else
+        {
+            // Draw
+            _sourceNation.GetComponent<NationInfoHandler>().removeAllUnits();
+            _targetNation.GetComponent<NationInfoHandler>().removeAllUnits();
         }
     }
 }

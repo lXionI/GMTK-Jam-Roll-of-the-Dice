@@ -6,9 +6,11 @@ using UnityEngine;
 public class GameEventSO : ScriptableObject
 {
     private readonly HashSet<GameEventListener> _listeners = new HashSet<GameEventListener>();
-
+    public bool _triggerable = true;
     public void Invoke()
     {
+        if (!_triggerable)
+            return;
         foreach (var eventListener in _listeners)
         {
             eventListener.RaiseEvent();
