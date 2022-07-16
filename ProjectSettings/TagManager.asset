@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy Troops
-  - Friendly Troops
+  - Player Troops
   layers:
   - Default
   - TransparentFX

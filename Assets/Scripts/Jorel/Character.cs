@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     private int baseHealth=6;
     public int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     public int unitCount;
     //public int damage;
     //Roll for damage
@@ -16,7 +16,6 @@ public class Character : MonoBehaviour
     public string trigger; 
 
     public float attackSpeed;
-    public float attackTime;
     public float attackRange;
 
     /*public Character( int unitCount)
@@ -34,7 +33,7 @@ public class Character : MonoBehaviour
 
     public void Update()
     {
-        
+        int damage = RollDamage();
         RaycastHit hit;
         Ray ray = new Ray(transform.position,Vector3.forward);
         if (!isDead)
@@ -43,15 +42,16 @@ public class Character : MonoBehaviour
             {
                 if (hit.collider.tag == trigger)
                 {
-                    Debug.Log("Treffe auf den Feind");
-                    hit.collider.GetComponent<Character>().SetDamage(RollDamage());
-                    
+                   // Debug.Log("Treffe auf den Feind");
+                    hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    //Debug.Log("Der schaden ist: " + damage);
                 }
             }
         }
     }
     public void SetDamage(int damage)
     {
+       // Debug.Log("Der abgezogene Schaden ist: " + damage);
         currentHealth -= damage;
         //isDamaged = true;
 
@@ -65,6 +65,14 @@ public class Character : MonoBehaviour
             //healthUI.SetActive(false);
             //Destroy(healthUI);
         }
+    }
+    public void Attack( int damage)
+    {
+        Debug.Log("Attack Schaden : " + damage);
+        // Play Attack animation
+
+            SetDamage(damage);
+            new WaitForSeconds(attackSpeed);
     }
 
     /** change Form ,if characterCount greater than 
