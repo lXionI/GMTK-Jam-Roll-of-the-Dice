@@ -13,6 +13,6 @@ public class UnitList : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(getRandomUnit());
+        // Debug.Log(getRandomUnit());
     }
 }

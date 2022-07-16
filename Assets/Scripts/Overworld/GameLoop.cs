@@ -12,4 +12,9 @@ public class GameLoop : MonoBehaviour
     // Generate units from Player Pool
     // Let Player place all units before next Step
     // Player can now Attack (aslong there is a Nation that can attack)
+
+    void Start()
+    {
+        
+    }
 }
