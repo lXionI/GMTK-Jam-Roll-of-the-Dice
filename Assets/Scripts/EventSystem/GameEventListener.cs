@@ -6,8 +6,14 @@ public class GameEventListener : MonoBehaviour
     [SerializeField] GameEventSO _gameEvent;
     [SerializeField] UnityEvent _unityEvent;
 
-    void Awake() => _gameEvent.Register(this);
-    void OnDestroy() => _gameEvent.Deregister(this);
+    void Awake()
+    {
+        _gameEvent.Register(this);
+    } 
+    void OnDestroy()
+    {
+        _gameEvent.Deregister(this);
+    } 
 
     public void RaiseEvent() => _unityEvent.Invoke();
 }

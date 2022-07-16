@@ -15,6 +15,9 @@ public class GameEventSO : ScriptableObject
         }
     }
 
-    public void Register(GameEventListener newListener) => _listeners.Add(newListener);
-    public void Deregister(GameEventListener listener) => _listeners.Remove(listener);
+    public void Register(GameEventListener gameEventListener)
+    {
+        _listeners.Add(gameEventListener);
+    }
+    public void Deregister(GameEventListener gameEventListener) => _listeners.Remove(gameEventListener);
 }

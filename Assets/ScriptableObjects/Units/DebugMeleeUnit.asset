@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DebugMeleeUnit
   m_EditorClassIdentifier: 
   unitName: DefaultUnit
-  unitHealth: 1
+  unitHealth: 5
   unitAttack: 1
-  unitRange: 3
+  unitRange: 1
   unitMovement: 1
-  unitOverworldMovement: 1
+  unitOverworldMovement: 2
