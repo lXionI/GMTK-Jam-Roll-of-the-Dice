@@ -17,5 +17,5 @@ public class NationSO : ScriptableObject
     public string battleSceneName;
     public NationType type;
     // Placeholder for unit
-    public UnitParametersSO unitToProduce;
+    public UnitSO unitToProduce;
 }

@@ -8,5 +8,5 @@ public class PlayerSO : ScriptableObject
     public int numberNations;
     public int unitsPetTurn;
     // Placeholder for possible units to generate
-    public List<UnitParametersSO> units;
+    public List<UnitSO> units;
 }
