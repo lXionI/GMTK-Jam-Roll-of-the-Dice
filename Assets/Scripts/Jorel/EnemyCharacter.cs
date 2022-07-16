@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class EnemyCharacter : MonoBehaviour
 {
-    private int baseHealth=6;
+    private int baseHealth = 6;
     public int maxHealth;
     public int currentHealth;
     public int unitCount;
     //public int damage;
     //Roll for damage
-    //private int dice=0;
     public bool isDead = false;
     //tag um um das Tag der Jeweiligen Fraktion zu ändern
-    public string trigger; 
+    public string trigger;
 
     public float attackSpeed;
     public float attackRange;
-
+    public GameObject view;
     /*public Character( int unitCount)
     {
         this.unitCount = unitCount;
@@ -35,24 +34,24 @@ public class Character : MonoBehaviour
     {
         int damage = RollDamage();
         RaycastHit hit;
-        Ray ray = new Ray(transform.position,Vector3.forward);
+        Ray ray = new Ray(transform.position, Vector3.back);// Vektor 3 austauschen mit den Kind (View) 
         if (!isDead)
         {
-            if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
+            if (Physics.SphereCast(ray, attackRange, out hit, attackRange))
             {
-                //Debug.Log("ich erkenne Etwas");
+                Debug.Log("ich erkenne auch etwas");
                 if (hit.collider.tag == trigger)
                 {
-                   // Debug.Log("Treffe auf den Feind");
-                    hit.collider.GetComponent<EnemyCharacter>().Attack(damage);//.SetDamage(damage); //(RollDamage());
-                    //Debug.Log("Der schaden ist: " + damage);
+                    Debug.Log("Treffe auf den Player");
+                    hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    //Debug.Log("Der schaden am Player ist: " + damage);
                 }
             }
         }
     }
     public void SetDamage(int damage)
     {
-       // Debug.Log("Der abgezogene Schaden ist: " + damage);
+        // Debug.Log("Der abgezogene Schaden ist: " + damage);
         currentHealth -= damage;
         //isDamaged = true;
 
@@ -67,13 +66,13 @@ public class Character : MonoBehaviour
             //Destroy(healthUI);
         }
     }
-    public void Attack( int damage)
+    public void Attack(int damage)
     {
-        Debug.Log("Attack Schaden : " + damage);
+        Debug.Log("Attack Damage: " + damage);
         // Play Attack animation
 
-            SetDamage(damage);
-            new WaitForSeconds(attackSpeed);
+        SetDamage(damage);
+        //new WaitForSeconds(attackSpeed);
     }
 
     /** change Form ,if characterCount greater than 
@@ -87,14 +86,14 @@ public class Character : MonoBehaviour
 
     public int RollDamage()
     {
-        int dots = 0; 
+        int dots = 0;
         if (unitCount <= 4)
         {
             dots = 4;
         }
-        else if(unitCount <=6)
+        else if (unitCount <= 6)
         {
-            dots = 6; 
+            dots = 6;
         }
         else if (unitCount <= 8)
         {
@@ -108,8 +107,8 @@ public class Character : MonoBehaviour
         {
             dots = 20;
         }
-        int dice = Random.Range(1, dots+1);
-        
+        int dice = Random.Range(1, dots);
+
         return dice;
     }
 
