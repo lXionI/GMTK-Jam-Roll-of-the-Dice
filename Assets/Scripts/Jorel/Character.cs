@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
     {
         int damage = RollDamage();
         RaycastHit hit;
-        Ray ray = new Ray(transform.position,Vector3.forward);
+        Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.forward));
         if (!isDead)
         {
             if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
                 if (hit.collider.tag == trigger)
                 {
                    // Debug.Log("Treffe auf den Feind");
-                    hit.collider.GetComponent<EnemyCharacter>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
                     //Debug.Log("Der schaden ist: " + damage);
                 }
             }

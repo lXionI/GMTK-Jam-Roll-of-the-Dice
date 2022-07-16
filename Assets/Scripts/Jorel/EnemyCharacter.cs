@@ -34,7 +34,8 @@ public class EnemyCharacter : MonoBehaviour
     {
         int damage = RollDamage();
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, Vector3.back);// Vektor 3 austauschen mit den Kind (View) 
+        Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));// transform.TransformDirection(Vector3.forward) Sorgt dafür, dass es in Blickrichtung geht
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward),Color.black);// Zeigt dir an,wo Forward ist 
         if (!isDead)
         {
             if (Physics.SphereCast(ray, attackRange, out hit, attackRange))
