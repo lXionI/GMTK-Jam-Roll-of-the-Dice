@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy Troops
   - Player Troops
+  - Fortress Heart
   layers:
   - Default
   - TransparentFX

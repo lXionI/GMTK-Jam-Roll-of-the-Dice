@@ -2,23 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class EnemyCharacter : MonoBehaviour
 {
-    private int baseHealth=6;
+    private int baseHealth = 6;
     public int maxHealth;
     public int currentHealth;
     public int unitCount;
     //public int damage;
     //Roll for damage
-    //private int dice=0;
     public bool isDead = false;
     //tag um um das Tag der Jeweiligen Fraktion zu ändern
     public string trigger;
-    public string trigger2;
 
     public float attackSpeed;
     public float attackRange;
-
+    public GameObject view;
     /*public Character( int unitCount)
     {
         this.unitCount = unitCount;
@@ -34,33 +32,27 @@ public class Character : MonoBehaviour
 
     public void Update()
     {
-        int damage = RollDamage();//for Debug
+        int damage = RollDamage();
         RaycastHit hit;
-        Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.forward));
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.black, attackRange);
+        Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));// transform.TransformDirection(Vector3.forward) Sorgt dafür, dass es in Blickrichtung geht
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward),Color.black);// Zeigt dir an,wo Forward ist 
         if (!isDead)
         {
-            if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
+            if (Physics.SphereCast(ray, attackRange, out hit, attackRange))
             {
-                Debug.Log("ich erkenne Etwas");
+                Debug.Log("ich erkenne auch etwas");
                 if (hit.collider.tag == trigger)
                 {
-                   // Debug.Log("Treffe auf den Feind");
+                    Debug.Log("Treffe auf den Player");
                     hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
-                    //Debug.Log("Der schaden ist: " + damage);
-                }
-                else if(hit.collider.tag == trigger2)
-                {
-                    Debug.Log("Treffe auf Fortress Heart");
-                    hit.collider.GetComponent<Fortress>().SetDamage(damage);//(RollDamage());
-                    //Debug.Log("Der schaden ist: " + damage);
+                    //Debug.Log("Der schaden am Player ist: " + damage);
                 }
             }
         }
     }
     public void SetDamage(int damage)
     {
-       // Debug.Log("Der abgezogene Schaden ist: " + damage);
+        // Debug.Log("Der abgezogene Schaden ist: " + damage);
         currentHealth -= damage;
         //isDamaged = true;
 
@@ -75,13 +67,13 @@ public class Character : MonoBehaviour
             //Destroy(healthUI);
         }
     }
-    public void Attack( int damage)
+    public void Attack(int damage)
     {
-        //Debug.Log("Attack Schaden : " + damage);
+        Debug.Log("Attack Damage: " + damage);
         // Play Attack animation
 
-            SetDamage(damage);
-            //new WaitForSeconds(attackSpeed);
+        SetDamage(damage);
+        //new WaitForSeconds(attackSpeed);
     }
 
     /** change Form ,if characterCount greater than 
@@ -95,14 +87,14 @@ public class Character : MonoBehaviour
 
     public int RollDamage()
     {
-        int dots = 0; 
+        int dots = 0;
         if (unitCount <= 4)
         {
             dots = 4;
         }
-        else if(unitCount <=6)
+        else if (unitCount <= 6)
         {
-            dots = 6; 
+            dots = 6;
         }
         else if (unitCount <= 8)
         {
@@ -116,8 +108,8 @@ public class Character : MonoBehaviour
         {
             dots = 20;
         }
-        int dice = Random.Range(1, dots+1);
-        
+        int dice = Random.Range(1, dots);
+
         return dice;
     }
 
