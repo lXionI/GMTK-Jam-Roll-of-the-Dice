@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName="UnitSO", menuName="Unit/UnitSO")]
 public class UnitSO : ScriptableObject
 {
+    public GameObject unitPrefab;
     public string unitName = "DefaultUnit";             
     public int unitHealth = 1;
     public int unitAttack = 1;

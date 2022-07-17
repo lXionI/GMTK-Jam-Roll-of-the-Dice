@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3175226152115993819, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
+      propertyPath: _playerInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 83cf0cb7eaf32cf4bbef8b115d0b66cb, type: 2}
     - target: {fileID: 3021216546872305682, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,10 +55,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3021216546872306668, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c81899258a14118458ce9c55ba765f0d, type: 2}
     - target: {fileID: 3021216546872306670, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3021216546872306670, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3021216546872305681, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
+    - {fileID: -2982801988824234551, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}

@@ -11,8 +11,20 @@ public class MoveUnits : MonoBehaviour
     private float bufferTimer = 0.05f;
     private float timer = 0.0f;
     private float resetTimer = 0.5f;
+
+    public void resetSelection()
+    {
+        _sourceNation = null;
+        _targetNation = null;
+    }
+
+    void Start()
+    {
+        _selecter = GameObject.FindGameObjectWithTag("Player").GetComponent<SelectNation>();
+    }
     void Update()
     {
+        // Simple buffer
         if (Input.GetButtonDown("Fire1") && _selecter.getSelectedNation() != null && timer > bufferTimer)
         {
             timer = 0.0f;
@@ -20,8 +32,7 @@ public class MoveUnits : MonoBehaviour
         timer += Time.deltaTime;
         if (Input.GetButtonDown("Fire2"))
         {
-            _sourceNation = null;
-            _targetNation = null;
+            resetSelection();
         }
     }
 
@@ -80,6 +91,7 @@ public class MoveUnits : MonoBehaviour
         }
         sourceNationInfo.removeAllUnits();
         _targetNation.GetComponent<NationInfoHandler>().setOwner(_sourceNation.GetComponent<NationInfoHandler>().getOwner());
+        _targetNation.GetComponent<NationInfoHandler>().nationAttacked();
     }
 
     void startFightForNation()
@@ -89,10 +101,12 @@ public class MoveUnits : MonoBehaviour
         int sourceArmySize = _sourceNation.GetComponent<NationInfoHandler>().getUnits().Count;
         int targetArmySize = _targetNation.GetComponent<NationInfoHandler>().getUnits().Count;
 
+        if(!_sourceNation.GetComponent<NationInfoHandler>().canAttack)
+            return;
+
         if(sourceArmySize > targetArmySize)
         {
             // Win
-            Debug.Log("WE WON BABY");
             if(targetArmySize > 0)
             {
                 _sourceNation.GetComponent<NationInfoHandler>().removeUnits(sourceArmySize - targetArmySize);

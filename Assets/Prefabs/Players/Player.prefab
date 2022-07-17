@@ -59,9 +59,11 @@ GameObject:
   - component: {fileID: 3021216546872306669}
   - component: {fileID: 3021216546872305681}
   - component: {fileID: 3021216546872305680}
+  - component: {fileID: -2982801988824234551}
+  - component: {fileID: -3175226152115993819}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,9 +174,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619115b934cfacd47a3ccff64df5cc6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInfo: {fileID: 0}
   units:
   - {fileID: 3021216548024634703}
   - {fileID: 3021216546015162619}
+--- !u!114 &-2982801988824234551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021216546872306670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df37b34f89ca36741a2c5ed7938dcdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 43b69e24142838f46a3f8214469c4151, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3021216546872305681}
+        m_TargetAssemblyTypeName: SelectNation, Assembly-CSharp
+        m_MethodName: selectNation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3175226152115993819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021216546872306670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3e9473f1c328046920aa553092e385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInfo: {fileID: 11400000, guid: 475621ca6bbe7c347b8f6e73effd45b2, type: 2}
 --- !u!1 &3021216547513471385
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class SelectNation : MonoBehaviour
     void Start()
     {
         layerMask = 1 << layerMask;
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
     // Update is called once per frame
     void Update()

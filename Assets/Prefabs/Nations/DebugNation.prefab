@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2502915693589689610}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.64, y: -0.2, z: 0}
   m_LocalScale: {x: 16.123817, y: 1, z: 8.1431}
   m_ConstrainProportionsScale: 0
@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nationMeta: {fileID: 11400000, guid: 583191586b13ad146be43116998d25dc, type: 2}
+  owner: {fileID: 0}
   unitsInNation: []
+  canAttack: 1
 --- !u!114 &5545463547610227185
 MonoBehaviour:
   m_ObjectHideFlags: 0

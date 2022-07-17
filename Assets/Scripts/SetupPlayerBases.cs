@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class SetupPlayerBases : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject enemyPlayer;
-    public GameObject playerBase;
-    public GameObject enemyBase;
-    public BaseSetupSO playerSetup;
-    public BaseSetupSO enemySetup;
+    public List<GameObject> _startBases;
 
-    void Start()
+    public void instantiatePlayers(GameStateMeta _gameMeta)
     {
-        playerSetup.playerRef = player;
-        playerSetup.baseRef = playerBase;
-        enemySetup.playerRef = enemyPlayer;
-        enemySetup.baseRef = enemyBase;
+        // _players = _gameMeta.getPlayerList();
+        foreach (GameObject player in _gameMeta.getPlayerList())
+        {
+            Instantiate(player, player.transform.position, Quaternion.identity);
+            player.GetComponent<playerInfoHolder>()._playerInfo._startNation = _startBases[0];
+            _startBases.RemoveAt(0);
+        }
     }
 }

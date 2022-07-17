@@ -9,12 +9,12 @@ public class NationInfoHandler : MonoBehaviour
     private GameObject owner;
     [SerializeField]
     private List<GameObject> unitsInNation;
-    public bool canAttack;
+    public bool canAttack = true;
 
-    void Start()
-    {
-        if(owner != null) GetComponent<MeshRenderer>().material = owner.GetComponent<MeshRenderer>().material;
-    }
+    // void Start()
+    // {
+        // if(owner != null) GetComponent<MeshRenderer>().material = owner.GetComponent<MeshRenderer>().material;
+    // }
 
     public GameObject getOwner()
     {
@@ -24,12 +24,17 @@ public class NationInfoHandler : MonoBehaviour
     public void setOwner(GameObject newOwner)
     {
         owner = newOwner;
-        GetComponent<MeshRenderer>().material = owner.GetComponent<MeshRenderer>().material;
+        GetComponent<MeshRenderer>().material = owner.GetComponent<MeshRenderer>().sharedMaterial;
     }
 
     public void nationAttacked()
     {
         canAttack = false;
+    }
+
+    public void rested()
+    {
+        canAttack = true;
     }
 
     public void addUnits(GameObject unit)

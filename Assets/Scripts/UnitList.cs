@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class UnitList : MonoBehaviour
 {
+    public PlayerSO _playerInfo;
     public List<GameObject> units;
+
+    void Start()
+    {
+    }
 
     public GameObject getRandomUnit()
     {
