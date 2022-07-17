@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     //Roll for damage
     //private int dice=0;
     public bool isDead = false;
-    //tag um um das Tag der Jeweiligen Fraktion zu ändern
+    //tag um um das Tag der Jeweiligen Fraktion zu ï¿½ndern
     public string trigger;
     public string trigger2;
 
@@ -35,27 +35,32 @@ public class Character : MonoBehaviour
     public void Update()
     {
         int damage = RollDamage();//for Debug
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.forward));
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.black, attackRange);
+        // RaycastHit hit;
+        // Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.forward));
+        // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.black, attackRange);
         if (!isDead)
         {
-            if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
+            // if (Physics.SphereCast(ray, attackRange, out hit, 2))
+            // Debug.Log(transform.position);
+            // if (Physics.SphereCast(transform.position, attackRange, Vector3.zero, out hit, 0))
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+            foreach (var hit in hitColliders)
             {
-                Debug.Log("ich erkenne Etwas");
-                if (hit.collider.tag == trigger)
+                if (hit.GetComponent<Collider>().tag == trigger)
                 {
                    // Debug.Log("Treffe auf den Feind");
-                    hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    hit.GetComponent<Collider>().GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    break;
                     //Debug.Log("Der schaden ist: " + damage);
                 }
-                else if(hit.collider.tag == trigger2)
+                else if(hit.GetComponent<Collider>().tag == trigger2)
                 {
-                    Debug.Log("Treffe auf Fortress Heart");
-                    hit.collider.GetComponent<Fortress>().SetDamage(damage);//(RollDamage());
+                    // Debug.Log("Treffe auf Fortress Heart");
+                    hit.GetComponent<Collider>().GetComponent<Fortress>().SetDamage(damage);//(RollDamage());
+                    break;
                     //Debug.Log("Der schaden ist: " + damage);
                 }
-            }
+            }   
         }
     }
     public void SetDamage(int damage)

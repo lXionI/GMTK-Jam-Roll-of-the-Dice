@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43c3a49719d9964a812f9a1d5d7377f, type: 3}
   m_Name: DebugRangeUnit
   m_EditorClassIdentifier: 
-  unitName: DefaultUnit
+  unitPrefab: {fileID: 3200670660115036122, guid: 7a97ac4e471777841abbffe61ae623cb, type: 3}
+  unitName: DebugRange
   unitHealth: 3
   unitAttack: 2
   unitRange: 5

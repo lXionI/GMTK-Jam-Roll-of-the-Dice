@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f38f116a224d498a49b0746b7f4ee, type: 3}
   m_Name: GameMeta
   m_EditorClassIdentifier: 
-  playerList: []
+  playerList:
+  - {fileID: 3021216546872306670, guid: 1514822fc55cb8e49840d5f8290032d7, type: 3}
+  - {fileID: 3132753027269054346, guid: 9316cf3163625f74db85428b21414122, type: 3}

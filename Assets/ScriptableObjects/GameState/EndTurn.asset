@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6998f2351b0b4c340aed86ce1ff7e4f2, type: 3}
   m_Name: EndTurn
   m_EditorClassIdentifier: 
-  events: []
+  events:
+  - {fileID: 11400000, guid: 336491ccbc18c054a8bc60fa798abaf9, type: 2}
+  - {fileID: 11400000, guid: 5b66da7bac3ba6e409812f9b0062866a, type: 2}

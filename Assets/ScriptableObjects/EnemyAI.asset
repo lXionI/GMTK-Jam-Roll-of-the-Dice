@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7953b547b99491f4d9339521de26d0c5, type: 3}
   m_Name: EnemyAI
   m_EditorClassIdentifier: 
-  numberNations: 0
-  unitsPetTurn: 0
-  units: []
+  _startNation: {fileID: 0}
+  _playerPrefab: {fileID: 3132753027269054346, guid: 9316cf3163625f74db85428b21414122, type: 3}
+  _unitsPetTurn: 0
+  _units:
+  - {fileID: 11400000, guid: 165715225c377fa4aade9ac9e1c8b121, type: 2}
+  - {fileID: 11400000, guid: 19adc2a680c2bf944963cd3739ed702a, type: 2}

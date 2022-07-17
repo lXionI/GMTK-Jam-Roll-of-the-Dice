@@ -14,6 +14,7 @@ public class PlayerNavMash : MonoBehaviour
 
     private void Update()
     {
-        navMeshAgent.destination = movePositionTransform.position;
+        if (movePositionTransform != null)
+            navMeshAgent.destination = movePositionTransform.position;
     }
 }
