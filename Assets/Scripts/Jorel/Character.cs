@@ -13,7 +13,8 @@ public class Character : MonoBehaviour
     //private int dice=0;
     public bool isDead = false;
     //tag um um das Tag der Jeweiligen Fraktion zu ändern
-    public string trigger; 
+    public string trigger;
+    public string trigger2;
 
     public float attackSpeed;
     public float attackRange;
@@ -33,18 +34,25 @@ public class Character : MonoBehaviour
 
     public void Update()
     {
-        int damage = RollDamage();
+        int damage = RollDamage();//for Debug
         RaycastHit hit;
         Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.forward));
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.black, attackRange);
         if (!isDead)
         {
             if (Physics.SphereCast(ray,attackRange, out hit, attackRange))
             {
-                //Debug.Log("ich erkenne Etwas");
+                Debug.Log("ich erkenne Etwas");
                 if (hit.collider.tag == trigger)
                 {
                    // Debug.Log("Treffe auf den Feind");
                     hit.collider.GetComponent<Character>().Attack(damage);//.SetDamage(damage); //(RollDamage());
+                    //Debug.Log("Der schaden ist: " + damage);
+                }
+                else if(hit.collider.tag == trigger2)
+                {
+                    Debug.Log("Treffe auf Fortress Heart");
+                    hit.collider.GetComponent<Fortress>().SetDamage(damage);//(RollDamage());
                     //Debug.Log("Der schaden ist: " + damage);
                 }
             }
@@ -69,11 +77,11 @@ public class Character : MonoBehaviour
     }
     public void Attack( int damage)
     {
-        Debug.Log("Attack Schaden : " + damage);
+        //Debug.Log("Attack Schaden : " + damage);
         // Play Attack animation
 
             SetDamage(damage);
-            new WaitForSeconds(attackSpeed);
+            //new WaitForSeconds(attackSpeed);
     }
 
     /** change Form ,if characterCount greater than 
